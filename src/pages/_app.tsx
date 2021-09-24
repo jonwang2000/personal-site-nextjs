@@ -19,10 +19,21 @@ function MyApp({ Component, pageProps }: AppProps) {
                 params={{
                     particles: {
                         number: {
-                            value: 50,
+                            value: 20,
                         },
                         size: {
                             value: 3,
+                        },
+                        opacity: {
+                            value: 0.8,
+                        },
+                        color: {
+                            value: "6e6e6e",
+                        },
+                        links: {
+                            color: {
+                                value: "6e6e6e",
+                            },
                         },
                     },
                     interactivity: {
