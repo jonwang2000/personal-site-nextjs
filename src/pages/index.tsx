@@ -14,14 +14,18 @@ import {
     useColorModeValue,
 } from "@chakra-ui/react";
 import { EmailIcon } from "@chakra-ui/icons";
+import { FaLinkedin } from "react-icons/fa";
 
 import HomeLayout from "components/layouts/HomeLayout";
 import Column from "components/ui/Column";
 import HomeColumnEntry from "components/ui/HomeColumnEntry";
+import BgParticles from "components/sections/BgParticles";
 import {
     NEON_GREEN_DARKMODE,
     NEON_GREEN_LIGHTMODE,
     GITHUB_LINK,
+    EMAIL_LINK,
+    LINKEDIN_LINK,
 } from "util/constants";
 
 export interface EntryData {
@@ -36,87 +40,110 @@ const Home: NextPage = () => {
     const [isAboutOpen, setIsAboutOpen] = useState(false);
     const prjRef = useRef<null | HTMLDivElement>(null);
     const expRef = useRef<null | HTMLDivElement>(null);
+    const color = useColorModeValue(NEON_GREEN_LIGHTMODE, NEON_GREEN_DARKMODE);
 
     const dataToSections = (data: Array<EntryData>) =>
         data.map((entry, index) => <HomeColumnEntry key={index} {...entry} />);
 
+    const renderTitle = () => (
+        <Stack>
+            <Heading size={"2xl"} fontWeight={"semibold"} color={color}>
+                {`Jonathan Wang`}
+            </Heading>
+            <Heading size={"lg"} fontWeight={"medium"}>
+                {`Computational Mathematics, UW 2023`}
+            </Heading>
+        </Stack>
+    );
+
+    const renderButtons = () => (
+        <Stack direction="row" py={4}>
+            <Button
+                py={6}
+                onClick={() => setIsAboutOpen(!isAboutOpen)}
+                variant="outline"
+            >
+                {isAboutOpen ? "Collapse" : "About Me"}
+            </Button>
+            <Button
+                py={6}
+                onClick={() =>
+                    prjRef.current
+                        ? prjRef.current.scrollIntoView({
+                              behavior: "smooth",
+                          })
+                        : null
+                }
+                variant="outline"
+            >
+                {`Projects`}
+            </Button>
+            <Button
+                py={6}
+                onClick={() =>
+                    expRef.current
+                        ? expRef.current.scrollIntoView({
+                              behavior: "smooth",
+                          })
+                        : null
+                }
+                variant="outline"
+            >
+                Experience
+            </Button>
+        </Stack>
+    );
+
+    const renderCollapse = () => (
+        <Collapse in={isAboutOpen}>
+            <Text minW={"100%"} fontSize={"xl"} pb={4}>
+                {`👋 I'm a mathematics student at the University of Waterloo,
+                                            working on my programming and math skills. I'm always
+                                            looking to learn new things, and I enjoy hands-on
+                                            experiences.`}
+            </Text>
+            <Text minW={"100%"} fontSize={"xl"} pb={2}>
+                {`Huge fan of the Toronto Raptors. Also I just migrated this
+                                            site from Gatsby to Next.js + Chakra, so let me know
+                                            how it looks!`}
+            </Text>
+        </Collapse>
+    );
+
+    const renderContactButtons = () => (
+        <Stack direction={"row"} py={2}>
+            <Button
+                py={6}
+                as={"a"}
+                href={EMAIL_LINK}
+                leftIcon={<EmailIcon />}
+                variant={"solid"}
+            >
+                {`Email me!`}
+            </Button>
+            <Button
+                py={6}
+                as={"a"}
+                href={LINKEDIN_LINK}
+                leftIcon={<FaLinkedin />}
+                variant={"solid"}
+            >
+                {`LinkedIn`}
+            </Button>
+        </Stack>
+    );
+
     return (
         <HomeLayout>
+            <BgParticles />
             <Container maxW={"5xl"}>
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                     <Center gridColumn={{ base: "1/2", md: "1/3" }} h={"100vh"}>
                         <Stack w={{ md: "5xl" }}>
-                            <Heading
-                                size={"2xl"}
-                                fontWeight={"semibold"}
-                                color={useColorModeValue(
-                                    NEON_GREEN_LIGHTMODE,
-                                    NEON_GREEN_DARKMODE
-                                )}
-                            >
-                                {`Jonathan Wang`}
-                            </Heading>
-                            <Heading size={"lg"} fontWeight={"medium"}>
-                                Computational Mathematics, UW 2023
-                            </Heading>
-                            <Stack direction="row" py={4}>
-                                <Button
-                                    py={6}
-                                    onClick={() => setIsAboutOpen(!isAboutOpen)}
-                                    variant="outline"
-                                >
-                                    {isAboutOpen ? "Collapse " : "About Me"}
-                                </Button>
-                                <Button
-                                    py={6}
-                                    onClick={() =>
-                                        prjRef.current
-                                            ? prjRef.current.scrollIntoView({
-                                                  behavior: "smooth",
-                                              })
-                                            : null
-                                    }
-                                    variant="outline"
-                                >
-                                    Projects
-                                </Button>
-                                <Button
-                                    py={6}
-                                    onClick={() =>
-                                        expRef.current
-                                            ? expRef.current.scrollIntoView({
-                                                  behavior: "smooth",
-                                              })
-                                            : null
-                                    }
-                                    variant="outline"
-                                >
-                                    Experience
-                                </Button>
-                            </Stack>
-                            <Collapse in={isAboutOpen}>
-                                <Text minW={"100%"} fontSize={"xl"} pb={4}>
-                                    {`I'm a mathematics student at the University of Waterloo,
-                                            working on my programming and math skills. I'm always
-                                            looking to learn new things, and I enjoy hands-on
-                                            experiences.`}
-                                </Text>
-                                <Text minW={"100%"} fontSize={"xl"} pb={2}>
-                                    {`I'm a fan of video games, cooking, and the
-                                        Toronto Raptors. My latest hobbies are sneakers and
-                                        running.`}
-                                </Text>
-                            </Collapse>
-
-                            <Box py={2}>
-                                <Button
-                                    py={6}
-                                    leftIcon={<EmailIcon />}
-                                    variant="solid"
-                                >
-                                    Email me!
-                                </Button>
-                            </Box>
+                            {renderTitle()}
+                            {renderButtons()}
+                            {renderCollapse()}
+                            {renderContactButtons()}
                         </Stack>
                     </Center>
                     <Box ref={prjRef}>
@@ -132,14 +159,27 @@ const Home: NextPage = () => {
                                         ),
                                     }}
                                 >
-                                    → See more on Github
+                                    {`→ See more on Github`}
                                 </ChakraLink>
                             </Stack>
                         </Column>
                     </Box>
                     <Box ref={expRef}>
                         <Column title="Experience">
-                            <Stack spacing={4}>{dataToSections(expData)}</Stack>
+                            <Stack spacing={4}>
+                                {dataToSections(expData)}
+                                <ChakraLink
+                                    href={"/resume.pdf"}
+                                    _hover={{
+                                        color: useColorModeValue(
+                                            NEON_GREEN_LIGHTMODE,
+                                            NEON_GREEN_DARKMODE
+                                        ),
+                                    }}
+                                >
+                                    {`→ See full resume`}
+                                </ChakraLink>
+                            </Stack>
                         </Column>
                     </Box>
                 </SimpleGrid>
