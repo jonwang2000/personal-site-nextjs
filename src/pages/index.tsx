@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import type { NextPage } from "next";
+import Head from "next/head";
 import {
     Box,
     Button,
@@ -135,6 +136,13 @@ const Home: NextPage = () => {
 
     return (
         <HomeLayout>
+            <Head>
+                <title>Jonathan Wang - UW 2023</title>
+                <meta
+                    name="viewport"
+                    content="initial-scale=1.0, width=device-width"
+                />
+            </Head>
             <BgParticles />
             <Container maxW={"5xl"}>
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
@@ -189,6 +197,13 @@ const Home: NextPage = () => {
 };
 
 const expData = [
+    {
+        title: "Web Engineer Intern",
+        subtitle: "Robinhood",
+        main: "Incoming Winter 2022 intern",
+        italics: "Jan 2022 - May 2022",
+        link: "https://robinhood.com/us/en/",
+    },
     {
         title: "Software Developer",
         subtitle: "Accedo.tv",
