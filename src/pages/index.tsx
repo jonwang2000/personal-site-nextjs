@@ -200,7 +200,7 @@ const expData = [
     {
         title: "Web Engineer Intern",
         subtitle: "Robinhood",
-        main: "Incoming Winter 2022 intern",
+        main: "Design Systems/UI Infrastructure team, worked on a whole lot of UI libraries and server-driven UI",
         italics: "Jan 2022 - May 2022",
         link: "https://robinhood.com/us/en/",
     },
