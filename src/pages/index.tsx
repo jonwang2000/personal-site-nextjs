@@ -198,6 +198,13 @@ const Home: NextPage = () => {
 
 const expData = [
     {
+        title: "Software Development Engineer Intern",
+        subtitle: "Amazon",
+        main: "DBS Leadership - DynamoDB",
+        italics: "Sep 2022 - Dec 2022",
+        link: "https://amazon.com",
+    },
+    {
         title: "Web Engineer Intern",
         subtitle: "Robinhood",
         main: "Design Systems/UI Infrastructure team, worked on a whole lot of UI libraries and server-driven UI",
