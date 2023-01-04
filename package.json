@@ -18,6 +18,8 @@
         "@chakra-ui/react": "^1.6.8",
         "@emotion/react": "^11",
         "@emotion/styled": "^11",
+        "@fontsource/inter": "^4.5.14",
+        "@fontsource/rubik": "^4.5.13",
         "@netlify/plugin-nextjs": "^3.9.0",
         "framer-motion": "^4",
         "next": "^12.0.7",
