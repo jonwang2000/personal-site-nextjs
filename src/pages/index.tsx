@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import {
     Text,
+    Button,
     Center,
     Container,
     Heading,
@@ -9,7 +10,8 @@ import {
     SimpleGrid,
     Stack,
 } from "@chakra-ui/react";
-import { ExternalLinkIcon } from "@chakra-ui/icons";
+import { EmailIcon, ExternalLinkIcon } from "@chakra-ui/icons";
+import { FaLinkedin } from "react-icons/fa";
 
 import HomeLayout from "components/layouts/HomeLayout";
 import BgParticles from "components/sections/BgParticles";
