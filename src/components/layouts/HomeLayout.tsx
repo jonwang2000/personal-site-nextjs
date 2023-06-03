@@ -8,7 +8,6 @@ type HomeLayoutProps = {
 const HomeLayout: FC<HomeLayoutProps> = ({ children }) => {
     return (
         <Flex
-            component="div"
             direction={"column"}
             align={"center"}
             maxW={{ xl: "1200px" }}
