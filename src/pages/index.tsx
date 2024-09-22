@@ -43,17 +43,25 @@ const Home: NextPage = () => {
     const renderTitle = () => (
         <Stack>
             <Heading py={2} size={"3xl"} fontWeight={"light"}>
-                {`Jonathan Wang`}
+                {`Jonathan Wang 👍`}
             </Heading>
-            <Heading size={"lg"} fontWeight={"light"}>
-                {`SWE @ `}{" "}
-                <MyLink isExternal href="https://scale.com/" text="Scale AI" />
+            <Heading size={"xl"} fontWeight={"light"}>
+                {`swe @ `}{" "}
+                <MyLink
+                    isExternal
+                    href="https://withpersona.com/"
+                    text="persona identities"
+                />
             </Heading>
             <Text fontSize={"xl"} fontWeight={"medium"}>
-                {`computational math @ uwaterloo | interned @ amazon aws, robinhood`}
+                previously swe @{" "}
+                <MyLink isExternal href="https://scale.com/" text="scale ai" />
             </Text>
-            <Text fontSize={"md"} fontWeight={"medium"}>
-                {`finishing off my math degree, siakam4mvp 2k23`}
+            <Text fontSize={"lg"} fontWeight={"medium"}>
+                {`bmath in computational math @ uwaterloo | interned @ aws, robinhood `}
+            </Text>
+            <Text fontSize={"md"} fontWeight={"normal"}>
+                {`owns a camera but never uses it`}
             </Text>
         </Stack>
     );
@@ -66,9 +74,9 @@ const Home: NextPage = () => {
             <Text>
                 <MyLink isExternal href={LINKEDIN_LINK} text={"linkedin"} />
             </Text>
-            <Text>
+            {/* <Text>
                 <MyLink isExternal href={"/resume.pdf"} text={"resume"} />
-            </Text>
+            </Text> */}
         </Stack>
     );
 
@@ -85,7 +93,7 @@ const Home: NextPage = () => {
             <Container maxW={"5xl"}>
                 <SimpleGrid columns={{ base: 1, md: 2 }} spacing={10}>
                     <Center gridColumn={{ base: "1/2", md: "1/3" }} h={"100vh"}>
-                        <Stack w={{ md: "5xl" }}>
+                        <Stack>
                             {renderTitle()}
                             {renderContactButtons()}
                         </Stack>

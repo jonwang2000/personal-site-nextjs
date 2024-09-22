@@ -11,7 +11,7 @@ const styles = {
     global: (props: Dict<any>) => ({
         body: {
             color: mode("gray.800", "gray.100")(props),
-            bg: mode("gray.100", "#141214")(props),
+            bg: mode("gray.100", "#0d0c0d")(props),
         },
     }),
 };
